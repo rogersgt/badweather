@@ -1,0 +1,71 @@
+.right {
+    float: right;
+    color: black;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.nav-menu {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    transition-duration: 1s;
+    width: 35%;
+    overflow: hidden;
+    z-index: 20;
+    ul {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: #b3b3b3;
+        height: 100vh;
+        li {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: .1rem;
+            margin: 0;
+            padding: 3% 0 3% 10%;
+            width: 100%;
+            display: block;
+            list-style-type: none;
+            &:hover {
+                cursor: pointer;
+                background-color: gray;
+            }
+            &:nth-child(1) {
+                padding-left: 80%;
+                padding-top: 7%;
+                padding-bottom: 7%;
+                border-bottom: .05rem solid gray;
+                &:hover {
+                    background-color: #b3b3b3;
+                }
+            }
+        }
+    }
+    .el-menu-vertical-demo {
+        height: 100vh;
+        width: 160%;
+    }
+}
+
+.arrow {
+    position: fixed;
+    top: 45%;
+    left: 1.6%;
+    z-index: 10;
+    font-size: 2rem;
+}
+
+i {
+    &:hover {
+        cursor: pointer;
+        text-shadow: 0 0 .3rem gray, 0 0 .5rem gray, 0 0 .9rem gray, 0 0 1.5rem gray;
+    }
+}
+
+@media(max-width: 1080px) {
+    .nav-menu {
+        width: 72%;
+    }
+}
