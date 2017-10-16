@@ -3,6 +3,7 @@ defaults: &defaults
   docker:
     - image: rhinogram/node-awscli:latest
 
+
 version: 2
 jobs:
 
@@ -43,7 +44,7 @@ jobs:
 workflows:
   version: 2
 
-  test:
+  build_all:
     jobs:
       - build:
           filters:
@@ -51,7 +52,7 @@ workflows:
               ignore:
                 - master
 
-  production:
+  deploy_prod:
     jobs:
       - build:
           filters:
@@ -64,4 +65,3 @@ workflows:
             branches:
               only:
                 - master
-  
