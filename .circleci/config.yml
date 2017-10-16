@@ -3,6 +3,7 @@ defaults: &defaults
   docker:
     - image: rhinogram/node-awscli:latest
 
+
 version: 2
 jobs:
 
@@ -25,10 +26,11 @@ jobs:
           root: tmp_cache
           paths:
             - build.zip
-  
+
   deploy:
     <<: *defaults
     steps:
+      - checkout
       - setup_remote_docker
       - attach_to_workspace:
           at: ~/badweather/tmp_cache
@@ -40,10 +42,12 @@ jobs:
             --storage-class REDUCED_REDUNDANCY --metadata-directive REPLACE \
             --cache-control max-age=31536000
 
+
+
 workflows:
   version: 2
 
-  test:
+  test_build:
     jobs:
       - build:
           filters:
@@ -51,12 +55,13 @@ workflows:
               ignore:
                 - master
 
-  production:
+  deploy_production:
     jobs:
       - build:
           filters:
-            only:
-              - master
+            branches:
+              only:
+                - master
       - deploy:
           requires:
             - build
@@ -64,4 +69,3 @@ workflows:
             branches:
               only:
                 - master
-  
