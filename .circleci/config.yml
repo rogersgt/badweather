@@ -32,7 +32,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - attach_to_workspace:
+      - attach_workspace:
           at: ~/badweather/tmp_cache
       - run: unzip tmp_cache/build.zip
       - run:
