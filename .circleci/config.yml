@@ -1,0 +1,67 @@
+defaults: &defaults
+  working_directory: ~/badweather
+  docker:
+    - image: rhinogram/node-awscli:latest
+
+version: 2
+jobs:
+
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: yarn
+      - run:
+          name: Prepare dist directory
+          command: mkdir -p dist && yarn files
+      - run:
+          name: Build
+          command: yarn build:prod
+      - run: 
+          name: Save for Deployment
+          command: mkdir -p tmp_cache && zip tmp_cache/build.zip -r dist
+      - persist_to_workspace:
+          root: tmp_cache
+          paths:
+            - build.zip
+  
+  deploy:
+    <<: *defaults
+    steps:
+      - setup_remote_docker
+      - attach_to_workspace:
+          at: ~/badweather/tmp_cache
+      - run: unzip tmp_cache/build.zip
+      - run:
+          name: Deploy
+          command: |
+            aws s3 cp dist s3://badweatherfront --recursive --acl public-read \
+            --storage-class REDUCED_REDUNDANCY --metadata-directive REPLACE \
+            --cache-control max-age=31536000
+
+workflows:
+  version: 2
+
+  general:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+
+  production:
+    jobs:
+      - build:
+          filters:
+            only:
+              - master
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+  
