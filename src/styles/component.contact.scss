@@ -1,0 +1,61 @@
+@import "./variables.scss";
+
+.contactForm {
+  width: 80%;
+  margin: 5%;
+  padding: 5%;
+  box-shadow: 0 0 3rem $light;
+  font-family: 'Open Sans', sans-serif;
+  .title {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  input, textarea {
+    font-size: .9rem;
+    width: 88%;
+    margin: .3% 5%;
+    padding: 1%;
+    border: .05rem solid $light;
+    border-radius: .2rem;
+  }
+  textarea {
+    height: 6em;
+  }
+  button {
+    width: 12%;
+    margin: .3% 44%;
+    padding: .8%;
+    border-radius: .1rem;
+    background-color: rgb(28.9%, 74.1%, 28.3%);
+    color: white;
+    border: none;
+    &:hover {
+      background-color: rgb(23.9%, 65.9%, 23.4%);
+      cursor: pointer;
+    }
+  }
+}
+@media(max-width: 1080px) {
+  .contactForm {
+    width: 100%;
+    margin: 0;
+    h1 {
+      width: 88%;
+    }
+    input {
+      width: 88%;
+      margin: .3% 0;
+      padding: 1%;
+    }
+    textarea {
+      width: 88%;
+      margin: 0;
+      padding: 1%;
+    }
+    button {
+      width: 90%;
+      margin: .3% 0;
+      padding: 1%;
+    }
+  }
+}

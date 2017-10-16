@@ -1,0 +1,108 @@
+@import "variables.scss";
+
+.twoColumns {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    width: 49.5%;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+  }
+}
+
+.banner {
+  width: 50%;
+  margin: 5% 25%;
+}
+
+video {
+  width: 100%;
+  overflow: scroll;
+}
+
+.banner {
+  position: absolute;
+  top: 5%;
+}
+
+.downArrows {
+  position: absolute;
+  width: 20%;
+  margin: 0 40%;
+  top: 90%;
+  color: white;
+  font-size: .9rem;
+  text-align: center;
+  &:hover {
+    cursor: default;
+  }
+}
+
+.album {
+  width: 100%;
+}
+
+.signature {
+  font-style: italic;
+}
+
+.musicOptions {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  li {
+    display: inline-block;
+    width: 32%;
+    margin: 0;
+    margin-left: .9%;
+    padding: 0;
+    img {
+      width: 50%;
+      margin: 0 25%;
+    }
+  }
+}
+
+.spotPlayer {
+  width: 100%;
+  margin: 0;
+  height: 40vh;
+}
+
+@media(max-width: 1206px) {
+  .downArrows {
+    top: 80%;
+  }
+}
+
+@media(max-width: 1080px) {
+  .musicOptions {
+    li {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .twoColumns {
+    li {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+@media(max-width: 1074px) {
+  .downArrows {
+    top: 60%;
+  }
+}
+
+@media(max-width: 1000px) {
+  .downArrows {
+    display: none;
+  }
+}
