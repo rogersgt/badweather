@@ -1,0 +1,82 @@
+@import "./variables.scss";
+
+#navMenu {
+  top: 0;
+  z-index: 50;
+  position: fixed;
+  background-color: $dark;
+  color: $light;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  .fa-bars {
+    float: left;
+    font-size: 2rem;
+    margin: .4rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .panel {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 55;
+    position: absolute;
+    ul {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: $dark;
+      li {
+        display: inline-block;
+        font-size: 1.1rem;
+        width: 12%;
+        margin: 0 8%;
+        padding: 0;
+        text-align: center;
+        h3 {
+          width: 100%;
+          text-align: center;
+          margin: 5% 0;
+          font-family: 'Saira Extra Condensed', sans-serif;
+          font-size: 1.8rem;
+          &:hover {
+            cursor: pointer;
+            color: $highlight;
+          }
+        }
+        &:nth-child(1) {
+          margin-left: 15%;
+        }
+      }
+    }
+  }
+  .closed {
+    left: -90%;
+  }
+}
+
+@media(max-width: 1080px) {
+  #navMenu {
+    .panel {
+      width: 60%;
+      height: 100vh;
+      margin-left: 0;
+      background-color: $dark;
+      i {
+        margin-bottom: 10%;
+      }
+      ul {
+        li {
+          display: block;
+          width: 85%;
+          float: right;
+          h3 {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
