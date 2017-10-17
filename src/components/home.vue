@@ -37,8 +37,9 @@
       </ul>
       <h2 class="title center noMargBottom">LISTEN</h2>
       <iframe class="spotPlayer" src="https://open.spotify.com/embed/album/0oEo6PLIoukPtYOXAYhzJ6" height="150" frameborder="0" allowtransparency="true"></iframe>
+    </div>
 
-      <ul class="musicOptions">
+    <ul class="musicOptions">
         <li>
           <a target="_blank" href="https://open.spotify.com/artist/1whJAEmRNttVE3XtGRUp9K">
             <img src="./spotify-icon.png" alt="Open Spotify Badweather Artist Page">
@@ -55,7 +56,6 @@
           </a>
         </li>
       </ul>
-    </div>
   </section>
 </template>
 <script>

@@ -53,6 +53,7 @@ video {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: $dark;
   li {
     display: inline-block;
     width: 32%;
@@ -60,8 +61,8 @@ video {
     margin-left: .9%;
     padding: 0;
     img {
-      width: 50%;
-      margin: 0 25%;
+      width: 30%;
+      margin: 0 35%;
     }
   }
 }
@@ -84,6 +85,10 @@ video {
       width: 100%;
       margin: 0;
       padding: 0;
+      img {
+        width: 50%;
+        margin: 0 25%;
+      }
     }
   }
   .twoColumns {

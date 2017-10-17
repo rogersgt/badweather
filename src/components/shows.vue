@@ -54,11 +54,12 @@ export default {
       return Promise.resolve();
     },
     getShows: async function() {
-      const bandName = 'badweather';
+      const bandName = process.env.NODE_ENV === 'production' ? 'badweather' : 'pinegrove';
       const url = `https://rest.bandsintown.com/artists/${bandName}/events?app_id=badweatherband`;
       const res = await this.$http.get(url);
       if (res.body) {
         this.shows = res.body.map((show) => show);
+        console.log(this.shows);
       }
       this.loading = false;
       this.noShows = this.shows.length === 0;
