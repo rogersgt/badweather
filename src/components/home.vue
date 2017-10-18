@@ -2,21 +2,21 @@
   <section class="outerSection">
     <nav-menu></nav-menu>
 
-    <img class="banner" src="./logo.png" alt="Badweather">
+    <img class="banner" src="assets/logo.png" alt="Badweather">
     <h6 class="downArrows">
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
       scroll down for music
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </h6>
-    <video poster="poster.JPG" id="bgvid" playsinline autoplay muted loop>
-      <source src="./bg2.webm" type="video/webm">
+    <video poster="assets/poster.JPG" id="bgvid" playsinline autoplay muted loop>
+      <source src="assets//bg2.webm" type="video/webm">
     </video>
 
     <div class="innerSection">
       <h1 class="center title">MUSIC</h1>
       <ul class="twoColumns">
         <li>
-          <img class="album left" src="./Confide.jpg" alt="Confide">
+          <img class="album left" src="assets/Confide.jpg" alt="Confide">
         </li>
         <li>
           <h1 class="center">Confide</h1>
@@ -42,17 +42,17 @@
     <ul class="musicOptions">
         <li>
           <a target="_blank" href="https://open.spotify.com/artist/1whJAEmRNttVE3XtGRUp9K">
-            <img src="./spotify-icon.png" alt="Open Spotify Badweather Artist Page">
+            <img src="assets/spotify-icon.png" alt="Open Spotify Badweather Artist Page">
           </a>
         </li>
         <li>
           <a target="_blank" href="https://itunes.apple.com/us/album/confide-ep/id1266906668">
-            <img src="./itunes-icon.png" alt="Open Confide in the iTunes Store">
+            <img src="assets/itunes-icon.png" alt="Open Confide in the iTunes Store">
           </a>
         </li>
         <li>
           <a target="_blank" href="https://play.google.com/store/music/album/Badweather_Confide?id=Bdwbmktmf7d457ug7yfspfbnpda&hl=en">
-            <img src="./google-play-icon.png" alt="Open Confide on google Play">
+            <img src="assets/google-play-icon.png" alt="Open Confide on google Play">
           </a>
         </li>
       </ul>

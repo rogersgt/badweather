@@ -4,3 +4,4 @@ dist
 *.env
 *.zip
 tmp_cache
+*.log

@@ -8,9 +8,8 @@
   },
   "scripts": {
     "build:dev": "NODE_ENV=development watchify -p browserify-hmr -t [ babelify --presets [ es2015 ] ] -t [ vueify ] -e src/app.js -o dist/index.js",
-    "build:prod": "NODE_ENV=production browserify -t [ envify --NODE_ENV=production ] -t [ babelify --presets [ es2015 ] ] -t [ vueify ] -e src/app.js > dist/index.js",
-    "clear": "rm -rf dist && mkdir dist && touch dist/index.js dist/style.css",
-    "files": "cp src/assets/* dist/ && cp src/index.html dist/index.html",
+    "build:prod": "webpack --config webpack.prod.js",
+    "files": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html",
     "start": "yarn clear && yarn files && yarn style & yarn build:dev & serve ./dist",
     "style": "node-sass src/styles/master.scss dist/style.css && node-sass src/styles/master.scss dist/style.css -w",
     "style:prod": "node-sass src/styles/master.scss dist/style.css"
@@ -20,7 +19,6 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "dotenv": "^4.0.0",
-    "element-ui": "^1.3.1",
     "envify": "^4.1.0",
     "fastclick": "^1.0.6",
     "moment": "^2.19.1",
@@ -30,13 +28,18 @@
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-vue": "^0.1.0",
     "babelify": "^7.3.0",
     "browserify": "^14.4.0",
     "browserify-hmr": "^0.3.5",
+    "css-loader": "^0.28.7",
     "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^13.3.0",
     "vueify": "^9.4.1",
-    "watchify": "^3.9.0"
+    "watchify": "^3.9.0",
+    "webpack": "^3.8.1"
   }
 }

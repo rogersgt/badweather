@@ -7,17 +7,17 @@
     <ul id="iconList" class="horizontalList">
       <li>
         <a target="_blank" href="http://www.bandsintown.com/a/1255890?came_from=267&app_id=badweatherpage">
-          <img class="img" src="./bandsintown-icon.png" alt="Go to Badweather's page on bandsintown">
+          <img class="img" src="assets/bandsintown-icon.png" alt="Go to Badweather's page on bandsintown">
         </a>
       </li>
       <li>
         <a target="_blank" href="https://www.facebook.com/badweathersc/app/123966167614127/">
-          <img class="img" src="./fb-icon.png" alt="Go to Badweather's tour dates on Faccebook">
+          <img class="img" src="assets/fb-icon.png" alt="Go to Badweather's tour dates on Faccebook">
         </a>
       </li>
       <li>
         <a target="_blank" href="https://www.instagram.com/badweatherband/">
-          <img src="./instagram-icon.png" alt="Follow Badweather shinnanegans on Instagram">
+          <img src="assets/instagram-icon.png" alt="Follow Badweather shinnanegans on Instagram">
         </a>
       </li>
     </ul>
@@ -25,7 +25,7 @@
       <item :key="show.id" v-for="show in shows" :show="show"></item>
     </ul>
     <div v-if="noShows && !loading" class="center message">There are no upcoming shows listed on Bandsintown. Check back with us later!</div>
-    <img id="loading" v-if="loading" src="./spinner.gif" alt="loading">
+    <img id="loading" v-if="loading" src="assets/spinner.gif" alt="loading">
   </div>
 
 </section>

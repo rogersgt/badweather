@@ -2,14 +2,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import attachFastClick from 'fastclick';
-import Element from 'element-ui'
+// import Element from 'element-ui'
 import home from './components/home.vue';
 import contact from './components/contact.vue';
 import shows from './components/shows.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-Vue.use(Element);
+// Vue.use(Element);
 
 const routes = [
   {
