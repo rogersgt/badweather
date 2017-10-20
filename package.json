@@ -9,8 +9,8 @@
   "scripts": {
     "build:dev": "NODE_ENV=development watchify -p browserify-hmr -t [ babelify --presets [ es2015 ] ] -t [ vueify ] -e src/app.js -o dist/index.js",
     "build:prod": "webpack --config webpack.prod.js",
-    "files": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html",
-    "start": "yarn clear && yarn files && yarn style & yarn build:dev & serve ./dist",
+    "files": "rm -rf dist && mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html",
+    "start": "yarn files && yarn style & yarn build:dev & serve ./dist",
     "style": "node-sass src/styles/master.scss dist/style.css && node-sass src/styles/master.scss dist/style.css -w",
     "style:prod": "node-sass src/styles/master.scss dist/style.css"
   },
