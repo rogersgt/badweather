@@ -1,15 +1,20 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
-import attachFastClick from 'fastclick';
-// import Element from 'element-ui'
+import fastClick from 'fastclick';
 import home from './components/home.vue';
 import contact from './components/contact.vue';
 import shows from './components/shows.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-// Vue.use(Element);
+Vue.use(() => {
+  if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        fastClick.attach(document.body);
+    }, false);
+  }
+});
 
 const routes = [
   {
@@ -43,5 +48,3 @@ const router = new VueRouter({
 const app = new Vue({
   router
 }).$mount('#app');
-
-attachFastClick(document.body);

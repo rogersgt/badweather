@@ -7,12 +7,12 @@
     "vue": "vue/dist/vue.common"
   },
   "scripts": {
-    "build:dev": "NODE_ENV=development watchify -p browserify-hmr -t [ babelify --presets [ es2015 ] ] -t [ vueify ] -e src/app.js -o dist/index.js",
+    "dev": "webpack-dev-server --config webpack.dev.js --hot",
     "build:prod": "webpack --config webpack.prod.js",
-    "files": "rm -rf dist && mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html",
-    "start": "yarn files && yarn style & yarn build:dev & serve ./dist",
-    "style": "node-sass src/styles/master.scss dist/style.css && node-sass src/styles/master.scss dist/style.css -w",
-    "style:prod": "node-sass src/styles/master.scss dist/style.css"
+    "files": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.$NODE_ENV.html dist/index.html",
+    "start": "yarn files && yarn style & yarn build:dev & serve ./dist & yarn style:w",
+    "style": "node-sass src/styles/master.scss dist/style.css",
+    "style:w": "node-sass src/styles/master.scss dist/$build_no/style.css -w"
   },
   "author": "",
   "license": "ISC",
@@ -35,11 +35,13 @@
     "browserify": "^14.4.0",
     "browserify-hmr": "^0.3.5",
     "css-loader": "^0.28.7",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
+    "vue-hot-reload-api": "^2.2.0",
     "vue-loader": "^13.3.0",
     "vueify": "^9.4.1",
     "watchify": "^3.9.0",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
   }
 }
