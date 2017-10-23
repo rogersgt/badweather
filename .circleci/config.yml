@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/badweather
   docker:
-    - image: rhinogram/node-awscli:latest
+    - image: gradyrogers/circleci2-aws
 
 
 version: 2
