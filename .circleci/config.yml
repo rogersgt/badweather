@@ -7,7 +7,7 @@ defaults: &defaults
 version: 2
 jobs:
 
-  build:
+  deploy:
     <<: *defaults
     steps:
       - checkout
@@ -28,22 +28,7 @@ jobs:
             mv dist/index.js dist/index.$CIRCLE_BUILD_NUM.js
             mv dist/style.css dist/style.$CIRCLE_BUILD_NUM.css
             sed -i "s/BUILD_NUMBER/$CIRCLE_BUILD_NUM/g" dist/index.html
-      - run: 
-          name: Save for Deployment
-          command: mkdir -p tmp_cache && zip tmp_cache/build.zip -r dist
-      - persist_to_workspace:
-          root: tmp_cache
-          paths:
-            - build.zip
-
-  deploy:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker
-      - attach_workspace:
-          at: ~/badweather/tmp_cache
-      - run: unzip tmp_cache/build.zip
+            cat dist/index.html
       - run:
           name: Deploy
           command: |
@@ -55,28 +40,12 @@ jobs:
             --cache-control max-age=300
 
 
-
 workflows:
   version: 2
 
-  test_build:
-    jobs:
-      - build:
-          filters:
-            branches:
-              ignore:
-                - master
 
   deploy_production:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
       - deploy:
-          requires:
-            - build
           filters:
             branches:
               only:
