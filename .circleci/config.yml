@@ -45,6 +45,7 @@ workflows:
 
 
   deploy_production:
+    jobs:
       - deploy:
           filters:
             branches:
