@@ -9,8 +9,9 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --hot",
     "build:prod": "webpack --config webpack.prod.js",
-    "files": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.$NODE_ENV.html dist/index.html",
-    "start": "yarn files && yarn style & yarn build:dev & serve ./dist & yarn style:w",
+    "files:dev": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html",
+    "files:prod": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.production.html dist/index.html",
+    "start": "yarn files:dev && yarn style & yarn dev & serve ./dist & yarn style:w",
     "style": "node-sass src/styles/master.scss dist/style.css",
     "style:w": "node-sass src/styles/master.scss dist/$build_no/style.css -w"
   },
@@ -19,6 +20,7 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
     "envify": "^4.1.0",
     "fastclick": "^1.0.6",
     "moment": "^2.19.1",

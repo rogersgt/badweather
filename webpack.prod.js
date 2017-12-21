@@ -1,11 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
-
-const env = new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: '"production"'
-  }
+const env = new Dotenv({
+  path: './prod.env'
 });
 
 const occur = new webpack.optimize.OccurrenceOrderPlugin();
@@ -14,6 +12,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'dist/',
     filename: 'index.js'
   },
   module: {

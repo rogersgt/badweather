@@ -34,6 +34,13 @@
       cursor: pointer;
     }
   }
+  .error {
+    border: .1rem solid $error;
+  }
+  .errMessage {
+    color: $error;
+    text-align: center;
+  }
 }
 @media(max-width: 1080px) {
   .contactForm {

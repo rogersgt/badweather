@@ -8,10 +8,11 @@
     <p class="center">
       Thanks for reaching out! We'll do our best to respond withing 24 hours.
     </p>
-    <input type="text" placeholder="email address" />
-    <input type="text" placeholder="confirm email address" />
-    <input type="text" placeholder="subject (i.e. Booking)" />
-    <textarea type="text" placeholder="message" />
+    <input v-model="email" type="text" :class="{ error: errEmail }" placeholder="email address" />
+    <input v-model="confirmEmail" type="text" :class="{ error: errEmail }" placeholder="confirm email address" />
+    <input v-model="subject" type="text" :class="{ error: errSubject }" placeholder="subject (i.e. Booking)" />
+    <textarea v-model="message" type="text" :class="{ error: errMessage }" placeholder="message" />
+    <div class="errMessage" v-if="displayError.length > 0">{{ displayError }}</div>
     <button v-on:click="submit">Submit</button>
   </form>
 </div>
@@ -29,12 +30,67 @@ export default {
       email: null,
       confirmEmail: null,
       subject: null,
-      message: null
+      message: null,
+      displayError: '',
+      errEmail: false,
+      errSubject: false,
+      errMessage: false,
+      emailApi: ''
     };
   },
   methods: {
     submit: function() {
-      alert('Sorry for the inconvenience! Our site is currently under construction...');
+      if (!this.email || this.email.indexOf('@') === -1) {
+        this.errEmail = true;
+        this.displayError = 'Please enter a valid email address';
+      } else if (this.email !== this.confirmEmail) {
+        this.errEmail = true;
+        this.displayError = 'Email addresses do not match';
+      } else if (!this.subject) {
+        this.errSubject = true;
+        this.displayError = 'Please include a subject to your message';
+      } else if (!this.message) {
+        this.errMessage = true;
+        this.displayError = 'Please include a message';
+      } else {
+        const emailOBject = {
+          email: this.email,
+          subject: this.subject,
+          message: this.message
+        }
+        const opts = {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        this.$http.post(this.emailApi, emailOBject, opts)
+        .then((data) => {
+          console.log(data);
+          alter('Thanks! We\'ll get back to you ASAP!');
+        }, (err) => {
+          console.log(err);
+        });
+      }
+    },
+    clearErrors: function() {
+      this.displayError = '';
+      this.errEmail = false;
+      this.errSubject = false;
+      this.errMessage = false;
+    }
+  },
+  watch: {
+    email: function(val) {
+      this.clearErrors();
+    },
+    confirmEmail: function(val) {
+      this.clearErrors();
+    },
+    subject: function(val) {
+      this.clearErrors();
+    },
+    message: function(val) {
+      this.clearErrors();
     }
   }
 }

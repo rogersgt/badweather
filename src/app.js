@@ -41,8 +41,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  history: true,
-  hashband: false
+  mode: 'history'
 });
 
 const app = new Vue({
