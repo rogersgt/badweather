@@ -35,7 +35,7 @@ export default {
       errEmail: false,
       errSubject: false,
       errMessage: false,
-      emailApi: ''
+      emailApi: process.env.API_HOST
     };
   },
   methods: {
