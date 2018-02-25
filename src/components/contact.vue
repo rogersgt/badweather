@@ -6,7 +6,7 @@
   <form class="contactForm">
     <h1 class="title">Contact Badweather</h1>
     <p class="center">
-      Thanks for reaching out! We'll do our best to respond withing 24 hours.
+      Thanks for reaching out! We'll do our best to respond within 24 hours.
     </p>
     <input v-model="email" type="text" :class="{ error: errEmail }" placeholder="email address" />
     <input v-model="confirmEmail" type="text" :class="{ error: errEmail }" placeholder="confirm email address" />
