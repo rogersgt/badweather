@@ -12,22 +12,20 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: yarn
       - run:
-          name: Copy Files
-          command: yarn files:prod
-      - run:
-          name: Build JS
-          command: yarn build:prod
-      - run:
-          name: Styles
-          command: yarn style
+          name: Build
+          command: |
+            yarn
+            yarn files:prod
+            yarn build:prod
+            yarn style
       - run:
           name: mark build version
           command: |
             mv dist/index.js dist/index.$CIRCLE_BUILD_NUM.js
             mv dist/style.css dist/style.$CIRCLE_BUILD_NUM.css
-            sed -i "s/BUILD_NUMBER/$CIRCLE_BUILD_NUM/g" dist/index.html
+            sed -i "s/.\/style.css/.\/style.$CIRCLE_BUILD_NUM.css/" dist/index.html
+            sed -i "s/.\/index.js/.\/index.$CIRCLE_BUILD_NUM.js/" dist/index.html
             cat dist/index.html
       - run:
           name: Deploy
