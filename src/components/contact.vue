@@ -34,8 +34,7 @@ export default {
       displayError: '',
       errEmail: false,
       errSubject: false,
-      errMessage: false,
-      emailApi: process.env.API_HOST
+      errMessage: false
     };
   },
   methods: {
@@ -63,10 +62,10 @@ export default {
             'Content-Type': 'application/json'
           }
         };
-        this.$http.post(this.emailApi, emailOBject, opts)
+        this.$http.post(`${process.env.API_HOST}`, emailOBject, opts)
         .then((data) => {
           console.log(data);
-          alter('Thanks! We\'ll get back to you ASAP!');
+          alert('Thanks! We\'ll get back to you ASAP!');
         }, (err) => {
           console.log(err);
         });

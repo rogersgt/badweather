@@ -9,7 +9,7 @@
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </h6>
     <video poster="assets/poster.JPG" id="bgvid" playsinline autoplay muted loop>
-      <source src="assets//bg2.webm" type="video/webm">
+      <!-- <source src="assets//bg2.webm" type="video/webm"> -->
     </video>
 
     <div class="innerSection">

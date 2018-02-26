@@ -8,10 +8,11 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --hot",
-    "build:prod": "webpack --config webpack.prod.js",
-    "files:dev": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html",
+    "build:prod": "yarn && webpack --config webpack.prod.js",
+    "build:dev": "yarn && yarn files:dev && yarn style && yarn dev",
+    "files:dev": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html && touch dist/index.js",
     "files:prod": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.production.html dist/index.html",
-    "start": "yarn files:dev && yarn style & yarn dev & serve ./dist & yarn style:w",
+    "start": "yarn build:dev && yarn dev & (cd dist && serve) & yarn style:w",
     "style": "node-sass src/styles/master.scss dist/style.css",
     "style:w": "node-sass src/styles/master.scss dist/$build_no/style.css -w"
   },
