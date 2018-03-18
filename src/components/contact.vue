@@ -13,12 +13,13 @@
     <input v-model="subject" type="text" :class="{ error: errSubject }" placeholder="subject (i.e. Booking)" />
     <textarea v-model="message" type="text" :class="{ error: errMessage }" placeholder="message" />
     <div class="errMessage" v-if="displayError.length > 0">{{ displayError }}</div>
-    <button v-on:click="submit">Submit</button>
+    <button type="button" v-on:click="submit">Submit</button>
   </form>
 </div>
 </section>
 </template>
 <script>
+import { SES } from 'aws-sdk';
 import navMenu from './navMenu.vue';
 
 export default {
@@ -38,7 +39,8 @@ export default {
     };
   },
   methods: {
-    submit: function() {
+    submit: function(e) {
+      e.preventDefault();
       if (!this.email || this.email.indexOf('@') === -1) {
         this.errEmail = true;
         this.displayError = 'Please enter a valid email address';
@@ -59,7 +61,8 @@ export default {
         }
         const opts = {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-api-key': `${process.env.API_KEY}`
           }
         };
         this.$http.post(`${process.env.API_HOST}`, emailOBject, opts)
@@ -67,7 +70,11 @@ export default {
           console.log(data);
           alert('Thanks! We\'ll get back to you ASAP!');
         }, (err) => {
-          console.log(err);
+          const msg = `
+            ERROR:
+            ${JSON.stringify(err)}
+          `;
+          alert(msg);
         });
       }
     },

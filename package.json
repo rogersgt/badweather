@@ -12,13 +12,14 @@
     "build:dev": "yarn && yarn files:dev && yarn style && yarn dev",
     "files:dev": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html && touch dist/index.js",
     "files:prod": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.production.html dist/index.html",
-    "start": "yarn build:dev && yarn dev & (cd dist && serve) & yarn style:w",
+    "start": "yarn build:dev & yarn style:w & open http://localhost:8080/dist/",
     "style": "node-sass src/styles/master.scss dist/style.css",
     "style:w": "node-sass src/styles/master.scss dist/$build_no/style.css -w"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.205.0",
     "babel-cli": "^6.26.0",
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
