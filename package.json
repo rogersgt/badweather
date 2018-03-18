@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.js --hot",
-    "build:prod": "yarn && webpack --config webpack.prod.js",
+    "build:prod": "yarn && yarn style && webpack --config webpack.prod.js",
     "build:dev": "yarn && yarn files:dev && yarn style && yarn dev",
     "files:dev": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.html dist/index.html && touch dist/index.js",
     "files:prod": "mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp src/index.production.html dist/index.html",

@@ -19,6 +19,15 @@ jobs:
             ./deploy.sh
 
 
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build
+          command: yarn files:prod && yarn build:prod && yarn style
+
 workflows:
   version: 2
 
@@ -29,5 +38,13 @@ workflows:
           filters:
             branches:
               only:
+                - master
+
+  general:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
                 - master
 
