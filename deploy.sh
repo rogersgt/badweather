@@ -1,6 +1,6 @@
 #!/bin/bash
-
-profile=$1 # aws-cli profile
+read -p "aws-cli profile name (press enter for default): " profile \
+break
 
 if [ -z "$profile" ]; then
   profile=default

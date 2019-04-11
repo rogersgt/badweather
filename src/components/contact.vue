@@ -69,6 +69,10 @@ export default {
         .then((data) => {
           console.log(data);
           alert('Thanks! We\'ll get back to you ASAP!');
+          this.email = '';
+          this.confirmEmail = '';
+          this.subject = '';
+          this.message = '';
         }, (err) => {
           const msg = `
             ERROR:
