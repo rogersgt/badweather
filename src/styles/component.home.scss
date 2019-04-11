@@ -1,5 +1,9 @@
 @import "variables.scss";
 
+.shadow {
+  box-shadow: 0 0 .2rem gray;
+}
+
 .twoColumns {
   width: 100%;
   margin: 0;
@@ -16,6 +20,7 @@
 .banner {
   width: 50%;
   margin: 5% 25%;
+  opacity: 0.8;
 }
 
 video {
@@ -49,24 +54,6 @@ video {
   font-style: italic;
 }
 
-.musicOptions {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: $dark;
-  li {
-    display: inline-block;
-    width: 32%;
-    margin: 0;
-    margin-left: .9%;
-    padding: 0;
-    img {
-      width: 30%;
-      margin: 0 35%;
-    }
-  }
-}
-
 .spotPlayer {
   width: 100%;
   margin: 0;
@@ -80,17 +67,6 @@ video {
 }
 
 @media(max-width: 1080px) {
-  .musicOptions {
-    li {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      img {
-        width: 50%;
-        margin: 0 25%;
-      }
-    }
-  }
   .twoColumns {
     li {
       width: 100%;

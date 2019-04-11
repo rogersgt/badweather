@@ -28,11 +28,13 @@
     <img id="loading" v-if="loading" src="assets/spinner.gif" alt="loading">
   </div>
 
+  <bottom-nav />
 </section>
 </template>
 <script>
 import navMenu from './navMenu.vue';
 import item from './showItem.vue';
+import bottomNav from './bottomNav.vue';
 
 export default {
   data: function() {
@@ -44,7 +46,8 @@ export default {
   },
   components: {
     navMenu,
-    item
+    item,
+    bottomNav
   },
   methods: {
     checkShows: function() {
