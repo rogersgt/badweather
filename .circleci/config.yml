@@ -12,6 +12,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Get env
+          command: |
+            aws s3 cp s3://rogersops/badweatherfront/master/prod.env ./ \
+            --region us-east-1
+      - run:
           name: Deploy
           command: |
             chmod +x deploy.sh
