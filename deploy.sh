@@ -1,11 +1,5 @@
 #!/bin/bash
 
-profile=$1 # aws-cli profile
-
-if [ -z "$profile" ]; then
-  profile=default
-fi
-
 # build
 yarn build:prod
 
@@ -18,9 +12,9 @@ sed "s/BUILD_NUMBER/$CIRCLE_BUILD_NUM/g" ./dist/index.html
 aws s3 cp dist s3://badweatherfront --exclude "index.html" --recursive --acl public-read \
 --storage-class REDUCED_REDUNDANCY --metadata-directive REPLACE \
 --cache-control max-age=31536000 \
---profile $profile
+--region us-east-1
 
 aws s3 cp dist/index.html s3://badweatherfront/ --acl public-read \
 --storage-class REDUCED_REDUNDANCY --metadata-directive REPLACE \
 --cache-control max-age=300 \
---profile $profile
+--region us-east-1
