@@ -1,30 +1,34 @@
 <template>
 <section class="outerSection">
-<nav-menu></nav-menu>
+  <nav-menu></nav-menu>
 
-<div class="innerSection">
-  <form class="contactForm">
-    <h1 class="title">Contact Badweather</h1>
-    <p class="center">
-      Thanks for reaching out! We'll do our best to respond within 24 hours.
-    </p>
-    <input v-model="email" type="text" :class="{ error: errEmail }" placeholder="email address" />
-    <input v-model="confirmEmail" type="text" :class="{ error: errEmail }" placeholder="confirm email address" />
-    <input v-model="subject" type="text" :class="{ error: errSubject }" placeholder="subject (i.e. Booking)" />
-    <textarea v-model="message" type="text" :class="{ error: errMessage }" placeholder="message" />
-    <div class="errMessage" v-if="displayError.length > 0">{{ displayError }}</div>
-    <button type="button" v-on:click="submit">Submit</button>
-  </form>
-</div>
+  <div class="innerSection">
+    <form class="contactForm">
+      <h1 class="title">Contact Badweather</h1>
+      <p class="center">
+        Thanks for reaching out! We'll do our best to respond within 24 hours.
+      </p>
+      <input v-model="email" type="text" :class="{ error: errEmail }" placeholder="email address" />
+      <input v-model="confirmEmail" type="text" :class="{ error: errEmail }" placeholder="confirm email address" />
+      <input v-model="subject" type="text" :class="{ error: errSubject }" placeholder="subject (i.e. Booking)" />
+      <textarea v-model="message" type="text" :class="{ error: errMessage }" placeholder="message" />
+      <div class="errMessage" v-if="displayError.length > 0">{{ displayError }}</div>
+      <button type="button" v-on:click="submit">Submit</button>
+    </form>
+  </div>
+
+  <bottom-nav></bottom-nav>
 </section>
 </template>
 <script>
 import { SES } from 'aws-sdk';
 import navMenu from './navMenu.vue';
+import bottomNav from './bottomNav.vue';
 
 export default {
   components: {
-    navMenu: navMenu
+    navMenu: navMenu,
+    bottomNav
   },
   data: function() {
     return {

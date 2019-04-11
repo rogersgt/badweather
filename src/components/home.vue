@@ -8,13 +8,24 @@
       scroll down for music
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </h6>
-    <video poster="assets/poster.JPG" id="bgvid" playsinline autoplay muted loop>
+    <video poster="assets/banner.jpg" id="bgvid" playsinline autoplay muted loop>
       <!-- <source src="assets//bg2.webm" type="video/webm"> -->
     </video>
 
     <div class="innerSection">
       <h1 class="center title">MUSIC</h1>
       <ul class="twoColumns">
+        <li>
+          <img class="album left shadow" src="assets/album2.jpg" alt="Badweather">
+        </li>
+        <li>
+          <h1 class="center">Badweather</h1>
+          <h5 class="center">To Be Release: July 2019</h5>
+
+          <p class="center">
+            Badweather's self-titled, self-produced LP is to be released Summer 2019.
+          </p>
+        </li>
         <li>
           <img class="album left" src="assets/Confide.jpg" alt="Confide">
         </li>
@@ -39,31 +50,17 @@
       <iframe class="spotPlayer" src="https://open.spotify.com/embed/album/0oEo6PLIoukPtYOXAYhzJ6" height="150" frameborder="0" allowtransparency="true"></iframe>
     </div>
 
-    <ul class="musicOptions">
-        <li>
-          <a target="_blank" href="https://open.spotify.com/artist/1whJAEmRNttVE3XtGRUp9K">
-            <img src="assets/spotify-icon.png" alt="Open Spotify Badweather Artist Page">
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://itunes.apple.com/us/album/confide-ep/id1266906668">
-            <img src="assets/itunes-icon.png" alt="Open Confide in the iTunes Store">
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://play.google.com/store/music/album/Badweather_Confide?id=Bdwbmktmf7d457ug7yfspfbnpda&hl=en">
-            <img src="assets/google-play-icon.png" alt="Open Confide on google Play">
-          </a>
-        </li>
-      </ul>
+    <bottom-nav />
   </section>
 </template>
 <script>
 import navMenu from './navMenu.vue';
+import bottomNav from './bottomNav.vue';
 
 export default {
   components: {
-    navMenu: navMenu
+    navMenu,
+    bottomNav
   }
 }
 </script>
