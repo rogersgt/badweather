@@ -5,3 +5,4 @@ dist
 *.zip
 tmp_cache
 *.log
+.DS_Store
