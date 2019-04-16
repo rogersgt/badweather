@@ -12,13 +12,19 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Set AWS Profile
+          command: |
+            echo "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY\nregion=us-east-1\noutput=json" > ~/.aws/credentials
+      - run:
           name: Get env
           command: |
             aws s3 cp s3://rogersops/badweatherfront/master/prod.env ./
       - run:
+          name: Build
+          command: yarn build:prod
+      - run:
           name: Deploy
           command: |
-            yarn build:prod
             mv dist/index.js dist/index.$CIRCLE_BUILD_NUM.js
             mv dist/style.css dist/style.$CIRCLE_BUILD_NUM.css
             sed "s/BUILD_NUMBER/$CIRCLE_BUILD_NUM/g" ./dist/index.html
