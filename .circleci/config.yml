@@ -14,6 +14,7 @@ jobs:
       - run:
           name: Set AWS Profile
           command: |
+            mkdir -p ~/.aws
             echo "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY\nregion=us-east-1\noutput=json" > ~/.aws/credentials
       - run:
           name: Get env
